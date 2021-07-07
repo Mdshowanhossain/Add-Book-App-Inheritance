@@ -44,6 +44,8 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
 
 // DUMMY TEXT
 
+
+
 // document.getElementById("submitBtn").addEventListener("click", function (e) {
 
 //     const titleBox = document.getElementById("title");
