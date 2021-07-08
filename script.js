@@ -7,16 +7,46 @@ class Book {
 }
 
 class TableData {
-    constructor(newBook) {
+
+    clearInput() {
+        document.getElementById("title").value = ''
+        document.getElementById("author").value = ''
+        document.getElementById("description").value = ''
     }
+    deleteData(target) {
+        if (target.className === 'delete') {
+            target.parentElement.parentElement.remove();
+        }
+    }
+
+
+
     receiveBookData(newBook) {
+
         const seeListItem = document.getElementById("book-list");
         const itemRow = document.createElement("tr");
         itemRow.innerHTML = `
         <td>${newBook.title}</td>
         <td>${newBook.author}</td>
-        <td>${newBook.descBox}</td>
-        <td></td>
+        <td>${newBook.description}</td>
+        <td><button class="delete">Delete</button></td>
+        `
+        seeListItem.appendChild(itemRow)
+    }
+
+    showAlert() {
+        const seeListItem = document.getElementById("classs");
+        const itemRow = document.createElement("p");
+        itemRow.innerHTML = `
+        <p class="alert">This filled is required</p>
+        `
+        seeListItem.appendChild(itemRow)
+
+    } showSuccess() {
+        const seeListItem = document.getElementById("classs");
+        const itemRow = document.createElement("p");
+        itemRow.innerHTML = `
+        <p class="success">Thank You for Add a Book</p>
         `
         seeListItem.appendChild(itemRow)
     }
@@ -24,16 +54,36 @@ class TableData {
 
 document.getElementById("submitBtn").addEventListener("click", function (e) {
     const title = document.getElementById("title").value;
-    // console.log(title)
     const author = document.getElementById("author").value;
-    // console.log(author)
     const descBox = document.getElementById("description").value;
-    // console.log(descBox)
+
     const newBook = new Book(title, author, descBox);
-    console.log(newBook)
     const tableData = new TableData();
-    tableData.receiveBookData(newBook)
+    // tableData.receiveBookData(newBook)
+
+    if (title === '' && author === '' && descBox === '') {
+        tableData.showAlert();
+        // alert('Warning')
+    }
+    else {
+        tableData.receiveBookData(newBook)
+        tableData.showSuccess();
+        tableData.clearInput()
+
+
+        // alert('Thank You')
+    }
+
     e.preventDefault();
+})
+
+
+document.getElementById("book-list").addEventListener("click", function (e) {
+
+    const tableData = new TableData();
+
+    tableData.deleteData(e.target)
+
 })
 
 
@@ -42,27 +92,105 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
 
 
 
-// DUMMY TEXT
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class Book {
+//     constructor(title, author, description) {
+//         this.title = title;
+//         this.author = author;
+//         this.description = description;
+//     }
+// }
+
+// class TableData {
+
+//     receiveBookData(newBook) {
+
+//         const seeListItem = document.getElementById("book-list");
+//         const itemRow = document.createElement("tr");
+//         itemRow.innerHTML = `
+//         <td>${newBook.title}</td>
+//         <td>${newBook.author}</td>
+//         <td>${newBook.description}</td>
+//         <button>Delete</button>
+//         `
+//         seeListItem.appendChild(itemRow)
+//     }
+
+//     showAlert() {
+//         const seeListItem = document.getElementById("classs");
+//         const itemRow = document.createElement("p");
+//         itemRow.innerHTML = `
+//         <p class="alert">This filled is required</p>
+//         `
+//         seeListItem.appendChild(itemRow)
+
+//     } showSuccess() {
+//         const seeListItem = document.getElementById("classs");
+//         const itemRow = document.createElement("p");
+//         itemRow.innerHTML = `
+//         <p class="success">Thank You for Add a Book</p>
+//         `
+//         seeListItem.appendChild(itemRow)
+//     }
+// }
 
 // document.getElementById("submitBtn").addEventListener("click", function (e) {
+//     const title = document.getElementById("title").value;
+//     const author = document.getElementById("author").value;
+//     const descBox = document.getElementById("description").value;
 
-//     const titleBox = document.getElementById("title");
-//     const titleBoxValue = titleBox.value;
+//     const newBook = new Book(title, author, descBox);
+//     const tableData = new TableData();
+//     tableData.receiveBookData(newBook)
 
-//     console.log(titleBoxValue)
+//     if (title === '' && author === '' && descBox === '') {
+//         tableData.showAlert();
+//         // alert('Warning')
+//     }
+//     else {
+//         tableData.showSuccess();
+//         // alert('Thank You')
+//     }
 
-//     const author = document.getElementById("author");
-//     const authorBoxValue = author.value;
 
-//     console.log(authorBoxValue)
+//     const title = document.getElementById("title").value = ''
+//     const author = document.getElementById("author").value = ''
+//     const descBox = document.getElementById("description").value = ''
 
 
-//     const descBox = document.getElementById("description");
-//     const descBoxValue = descBox.value;
 
-//     console.log(descBoxValue)
+
+
+
+
+
 
 //     e.preventDefault();
 // })
+
+
+
+

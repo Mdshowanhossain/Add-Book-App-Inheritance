@@ -1,3 +1,18 @@
 body {
   background-color: aquamarine;
 }
+.container {
+  margin-top: 100px;
+}
+
+.alert {
+  font-size: 14px;
+  color: red;
+  text-align: center;
+}
+.success {
+  font-size: 14px;
+  color: green;
+  /* background-color: white; */
+  text-align: center;
+}
